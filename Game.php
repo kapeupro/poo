@@ -112,9 +112,7 @@ class Game {
         echo "Vous êtes sur la case K, vous devez vous déplacer vers la case E.\n";
         echo "Vous pouvez utiliser les commandes suivantes :\n";
         echo "haut, bas, gauche, droite\n";
-        echo "Appuyez sur entrée pour continuer.\n";
-        $this->showMap();
-        $this->playerChoice();
+        echo "Appuyez sur une direction\n";
     }
 
     public function playerChoice(){
