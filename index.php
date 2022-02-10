@@ -12,7 +12,8 @@ require_once 'Game.php';
  * 
  * Créer une classe Player avec $items (tableau vide)
  * 
- * Créer dans Game les méthodes "launch()" qui prompt au joueur ce qu'il veut faire ( haut bas gauche droite)
+ * Créer dans Game les méthodes " launch() " qui fait une introduction et affiche la map
+ *  " playerChoice() " qui prompt au joueur ce qu'il veut faire ( haut bas gauche droite)
  * 
  * Créer dans Player les méthodes "checkDest" qui va vérifier si la destination est un mur ou non 
  * "move()" qui va déplacer le joueur 
@@ -25,6 +26,8 @@ require_once 'Game.php';
     $game = new Game();
     $game->init();
     $game->showMap();
+    $game->launch();
+
 
 
 ?>
