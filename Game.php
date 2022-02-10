@@ -22,6 +22,7 @@
 
 class Game {
     protected $map;
+    protected $shopMap;
     protected $playerP;
     protected $launch;
     protected $playerChoice;
@@ -48,28 +49,64 @@ class Game {
         $this->playerP = $playerP;
     }
 
+    public function setCell($x, $y, $cell) {
+        $this->map[$x][$y] = $cell;
+    }
 
-    function init() {
+
+    public function init() {
         $map = [ 
             [0 , 1 , 0 , 1 , 1],
             [0 , 1 , 0 , 1 ,"K"],
-            [0 , 1 , 1 , 0 , 1],
+            ["s" , 1 , 1 , 0 , 1],
             [0 , 1 , 0 , 1 , 0],
             [0 , 1 , 0 , 1 , 0],
             [0 , 0 , 0 , 1 , "E"],
           ];
         $this->setMap($map);
         $this->setPlayer($this->getMap());
+        for($line = 0; $line < count($this->getMap()); $line++) {
+            for($column = 0; $column < count($this->getMap()[$line]); $column++) {
+                if($this->getMap()[$line][$column] == "K") {
+                    $this->getPlayer()[$line][$column] = "K";
+                }
+                elseif($this->getMap()[$line][$column] == "E") {
+                    $this->getPlayer()[$line][$column] = "E";
+                }
+                elseif($this->getMap()[$line][$column] == "s") {
+                    $this->setCell($line , $column , "p");  // player position
+                }           
+                else {
+                    $this->getPlayer()[$line][$column] = " ";
+                }
+                
+
+                }
+            }
+        }
+    
+
+     function showMap(){
+        for ($column = 0; $column <= count($this->getMap()[0]); $column++){
+            echo " - ";
+        }
+        echo "\n";
+        for($line = 0; $line < count($this->getMap()); $line++){
+            echo "| ";
+            for($cell = 0; $cell < count($this->getMap()[$line]); $cell++){
+                echo " ";
+                echo $this->getMap()[$line][$cell];
+                echo " ";
+            }
+            echo " | \n";
+        }
+        for ($column = 0; $column <= count($this->getMap()[0]); $column++){
+            echo " - ";
+        }
+        echo "\n";
     }
 
-    function  showMap () {
-        for($line = 0; $line < count($this->getMap()); $line++){
-            for($cell = 0; $cell < count($this->getMap()[$line]); $cell++){
-                echo $this->getMap()[$line][$cell];
-            }
-            echo "\n";
-        }
-    }
+    
 
     public function launch() {
         echo "Veuillez choisir une direction : \n";    
@@ -84,18 +121,22 @@ class Game {
         echo "\n"; 
         if ($direction === "z") {
             echo "Vous avez choisi de monter";
+            echo "\n";
             $move = true;
         }
         elseif ($direction === "q") {
             echo "Vous avez choisi de gauche";
+            echo "\n";
             $move = true;
         }
         elseif ($direction === "s") {
             echo "Vous avez choisi de descendre";
+            echo "\n";
             $move = true;
         }
         elseif ($direction === "d") {
             echo "Vous avez choisi de droite";
+            echo "\n";
             $move = true;
         }
         else {
