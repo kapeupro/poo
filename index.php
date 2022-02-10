@@ -27,6 +27,7 @@ require_once 'Game.php';
     $game->init();
     $game->showMap();
     $game->launch();
+    $game->playerChoice();
 
 
 

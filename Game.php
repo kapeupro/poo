@@ -72,16 +72,42 @@ class Game {
     }
 
     public function launch() {
-        echo "Veuillez choisir une direction : \n";
-        echo "haut : Allez en Haut \n";
-        echo "bas : Allez en Bas \n";
-        echo "gauche : Allez à Gauche \n";
-        echo "droite : Allez à Droite \n";
-        
+        echo "Veuillez choisir une direction : \n";    
     }
     public function playerChoice(){
-
+        $move = false;
+        while($move === false) {
+        echo "Votre choix : ";
+        $direction = rtrim(fgets(STDIN));
+        echo "\n";
+        echo "Vous avez choisi : " . $direction;
+        echo "\n"; 
+        if ($direction === "z") {
+            echo "Vous avez choisi de monter";
+            $move = true;
+        }
+        elseif ($direction === "q") {
+            echo "Vous avez choisi de gauche";
+            $move = true;
+        }
+        elseif ($direction === "s") {
+            echo "Vous avez choisi de descendre";
+            $move = true;
+        }
+        elseif ($direction === "d") {
+            echo "Vous avez choisi de droite";
+            $move = true;
+        }
+        else {
+            echo "Veuillez choisir une direction valide : \n";
+            echo "haut : haut \n";
+            echo "bas : bas \n";
+            echo "gauche : gauche \n";
+            echo "droite : droite \n";
+        }
     }
+        
+}   
 
 }
 
