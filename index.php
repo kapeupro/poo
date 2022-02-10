@@ -24,11 +24,15 @@ require_once 'Game.php';
 
 
     $game = new Game();
+    /*$gameover = false;*/ 
     $game->init();
     $game->showMap();
     $game->launch();
     $game->playerChoice();
-
+    /*while ($gameover == false) {
+        $game->playerChoice();
+        $game->showMap();
+    }*/
 
 
 

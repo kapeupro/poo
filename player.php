@@ -24,7 +24,7 @@ class Player {
     }
 
     public function playerPostion() {
-        
+
     }
     
    public function checkDest() {
@@ -33,7 +33,7 @@ class Player {
    }
 
     public function move() {
-    
+
     }
     
 

@@ -68,7 +68,7 @@ class Game {
         for($line = 0; $line < count($this->getMap()); $line++) {
             for($column = 0; $column < count($this->getMap()[$line]); $column++) {
                 if($this->getMap()[$line][$column] == "K") {
-                    $this->getPlayer()[$line][$column] = "K";
+                    $this->getPlayer()[$line][$column] = "K"; // On place le joueur sur la case "K"
                 }
                 elseif($this->getMap()[$line][$column] == "E") {
                     $this->getPlayer()[$line][$column] = "E";
@@ -78,6 +78,7 @@ class Game {
                 }           
                 else {
                     $this->getPlayer()[$line][$column] = " ";
+                    //$this->setCell($line , $column , " "); // On place les cases vides
                 }
                 
 
@@ -106,11 +107,16 @@ class Game {
         echo "\n";
     }
 
-    
-
     public function launch() {
-        echo "Veuillez choisir une direction : \n";    
+        echo "Bienvenue dans le jeu de la mort qui tue !\n";
+        echo "Vous êtes sur la case K, vous devez vous déplacer vers la case E.\n";
+        echo "Vous pouvez utiliser les commandes suivantes :\n";
+        echo "haut, bas, gauche, droite\n";
+        echo "Appuyez sur entrée pour continuer.\n";
+        $this->showMap();
+        $this->playerChoice();
     }
+
     public function playerChoice(){
         $move = false;
         while($move === false) {
